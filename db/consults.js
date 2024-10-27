@@ -3,7 +3,7 @@
     the consults are used in all of the system
 */
 
-//Find users for 
+//Find users 
 db.users.findOne(
     {
         _id: "????",     

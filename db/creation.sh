@@ -3,23 +3,24 @@
 echo "DATABASE CREATION"
 mongosh --file database.js
 
+path="../src/docs"
 function creating_user() {
     local user="$1" 
     echo "Creating $user files..."
-    mkdir -p "../docs/$user"
-    mkdir -p "../docs/$user/raiz"
-    mkdir -p "../docs/$user/shared"
+    mkdir -p "$path/$user"
+    mkdir -p "$path/$user/raiz"
+    mkdir -p "$path/$user/shared"
 }
 
 # Inicializando archivos
 echo "CREATING INITIAL DATA"
-mkdir -p "../docs"
+mkdir -p $path
 
 creating_user "admin"
-touch "../docs/admin/raiz/firstfile.txt"
-touch "../docs/admin/raiz/secondfile.txt"
+touch "$path/admin/raiz/firstfile.txt"
+touch "$path/admin/raiz/secondfile.txt"
 
 creating_user "iGriega"
-touch "../docs/iGriega/raiz/hello-world.txt"
+touch "$path/iGriega/raiz/hello-world.txt"
 
 creating_user "empleado"

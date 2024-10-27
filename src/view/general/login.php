@@ -9,9 +9,13 @@
 <body>
 
 <?php include "./header.php"?>
+<?php
+if (isset($_GET['e']) && $_GET['e'] == '401') {
+    echo '<div class="error">Credenciales invalidas</div>';
+}
+?>
 
 <h1>Ingresar</h1>
-
 <div class="centrado">
     <img src="../../assets/img/nube.png" alt="wallpaper" id="wallpaper-nube"> 
 </div>
