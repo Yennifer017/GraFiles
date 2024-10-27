@@ -20,11 +20,19 @@
     <input type="text" id="username" name="username" required>
     <br><br>
 
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" name="name" required>
+    <br><br>
+
+    <label for="lastname">Apellido:</label>
+    <input type="text" id="lastname" name="lastname" required>
+    <br><br>
+
     <label for="password">Contraseña:</label>
     <input type="password" id="password" name="password" required>
     <br>
 
-    <input type="submit" value="Registrarse">
+    <input type="submit" value="Crear Usuario">
 </form>
 <div class="espaciado">
 
