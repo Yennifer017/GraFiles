@@ -1,7 +1,13 @@
 <?php 
 class FilesDB{
     public function getAllDeletedFiles($db){
-        
+        $collection = $db->trash;
+        $documents = $collection->find();
+        $documentsPHP = [];
+        foreach ($documents as $document) {
+            $documentsPHP[] = new File($document['name'], $document['type']);
+        }
+        return $documentsPHP;
     }
 
 
@@ -63,7 +69,11 @@ class FilesDB{
 
         if ($result && isset($result['files'][0])) {
             $fileFound = $result['files'][0];
-            return new File($fileFound['name'], $fileFound['type'], $fileFound['content']);
+            return new File(
+                $fileFound['name'], 
+                $fileFound['type'], 
+                $fileFound['content']
+            );
         } else {
             throw new NoDataFoundEx();
         }
