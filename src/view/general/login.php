@@ -32,7 +32,7 @@ if (isset($_GET['e']) && $_GET['e'] == '401') {
     <input type="password" id="password" name="password" required>
     <br>
 
-    <input type="submit" value="Ingresasr">
+    <input type="submit" value="Ingresar">
 </form>
 <div class="espaciado">
 

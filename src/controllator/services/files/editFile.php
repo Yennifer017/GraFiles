@@ -9,6 +9,7 @@ include "../../../model/exceptions/NoDataFoundEx.php";
 include "../../../model/instances/User.php";
 include "../../../model/instances/File.php";
 include "../../db/FilesDB.php";
+include "../../../model/exceptions/NoUpdateEx.php";
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -18,18 +19,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $extension = isset($_POST['extension']) ? $_POST['extension'] : '';
     $content = isset($_POST['content']) ? $_POST['content'] : '';
 
-    $returnPath = "../../../view/user/view-files.php";
+    $returnPath = "../../../view/user/edit-file.php";
     try {
         $db = Connection::getInstance()->getDB();
         $session = new Session();
         $user = $session->get_session_data();
         $fileDB = new FilesDB();
         $file = new File($name, $extension, $content);
-        $fileDB->createFile($db, $file, $user->getUsername());
-        header("Location: $returnPath?e=200");
+        $fileDB->editFile($db, $file, $user->getUsername());
+        header("Location: $returnPath?n=$name&e=200");
         exit;
     } catch (Exception $th) {
-        header("Location: $returnPath?e=400");
+        header("Location: $returnPath?n=$name&e=400");
         exit;
     }
     

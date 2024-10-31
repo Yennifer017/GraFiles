@@ -4,7 +4,7 @@ class File {
     private $type;
     private $content;
 
-    public function __construct($name, $type, $content = '') {
+    public function __construct($name, $type = '', $content = '') {
         $this->name = $name;
         $this->type = $type;
         $this->content = $content;

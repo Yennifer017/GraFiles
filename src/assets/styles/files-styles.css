@@ -1,0 +1,74 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 40px 10px;
+    justify-content: center; 
+}
+
+.file h2 {
+    text-align: center;
+}
+
+.file {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    background-color: #363636;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.file > div:first-child {
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+}
+
+.file img {
+    max-width: calc(100% - 20px);
+    max-height: calc(100% - 20px);
+    padding: 10px;
+    object-fit: cover;
+}
+
+.file > div:last-child {
+    flex-grow: 1;
+    padding: 0.5rem;
+}
+
+.file p {
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+}
+
+.file-button {
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.file-button:hover {
+    background-color: #0056b3;
+}
+
+.file-button:last-child {
+    background-color: #dc3545;
+}
+
+.file-button:last-child:hover {
+    background-color: #c82333;
+}

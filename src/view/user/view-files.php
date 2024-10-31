@@ -13,20 +13,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrarse</title>
     <link rel="stylesheet" href="../../assets/styles/styles.css">
+    <link rel="stylesheet" href="../../assets/styles/files-styles.css">
 </head>
 <body>
 
 <?php
-    $session = new Session();
-    $user = $session->get_session_data();
-    if($user->getRol() == User::ADMIN_ROL){
-        include "../user/admi-header.php";
-    } else if($user->getRol() == User::EMPLEADO_ROL){
-        include "../user/user-header.php";
-    } else {
-        header("Location: ../general/login.php?e=401");
-        exit;
-    }
+    include "./header.php";
     try {
         $session = new Session();
         $user = $session->get_session_data();
@@ -52,6 +44,9 @@ if (isset($_GET['e'])) {
         case 200:
             echo '<div class="success">Se creo un archivo correctamente</div>';
             break;
+        case 401:
+            echo '<div class="success">No se encontro un archivo :c</div>';
+            break;
         default:
             echo '<div class="error">Ocurrio un error al crear el archivo, intentalo de nuevo</div>';
             break;
@@ -59,12 +54,18 @@ if (isset($_GET['e'])) {
 }
 ?>
 
-<div>
+<div class="container">
 <?php foreach ($files as $file): ?>
     <div class='file'>
-        <p>Nombre: <?= htmlspecialchars($file->getName()); ?></p>
-        <p>Tipo: <?= htmlspecialchars($file->getType()); ?></p>
-        <button>Editar</button>
+        <div>
+            <img src="../../assets/img/doc-icon.png" alt="file icon">
+        </div>
+        <div>
+            <p>Nombre: <?= htmlspecialchars($file->getName()); ?></p>
+            <p>Tipo: <?= htmlspecialchars($file->getType()); ?></p>
+            <a class="file-button" href="./edit-file.php?n=<?php echo $file->getName();?>">Editar</a>
+            <a class="file-button" href="#">Eliminar</a>
+        </div>
     </div>
 <?php endforeach; ?>    
 </div>

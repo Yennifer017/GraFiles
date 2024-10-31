@@ -28,3 +28,23 @@ db.users.insertOne(
         shared: []
     }
 )
+
+//show all documents
+
+//update one document
+db.users.updateOne(
+    {
+        _id: "??"
+    },
+    {
+        $set: { "files.$[file].content": "???" }
+    },
+    {
+        arrayFilters: [
+            { 
+                "file.name": "???", 
+                "file.type": "??" 
+            }
+        ]
+    }
+)

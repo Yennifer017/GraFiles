@@ -62,3 +62,22 @@ db.users.insertMany(
     ]
 )
 
+
+db.trash.insertMany(
+    [
+        {
+            name: "helloworld",
+            type: "txt",
+            content: "iGriega's bug here :c",
+            date: '31-10-2024',
+            user: 'iGriega'
+        },
+        {
+            name: "to-admin",
+            type: "txt",
+            content: "iGriega's 2 bug here :c, dont read this",
+            date: '31-10-2024',
+            user: 'iGriega'
+        }
+    ]
+)

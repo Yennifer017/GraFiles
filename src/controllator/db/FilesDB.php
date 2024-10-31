@@ -1,5 +1,10 @@
 <?php 
 class FilesDB{
+    public function getAllDeletedFiles($db){
+        
+    }
+
+
     public function getAllFiles($db, $username){
         $collection = $db->users;
         $user = $collection->findOne(['_id' => $username]);
@@ -65,7 +70,27 @@ class FilesDB{
         
     }
 
-    public function editFile(){
-        
+    public function editFile($db, File $file, $username){
+        $collection = $db->users;
+        $filter = [
+            '_id' => $username
+        ];
+        $update = [
+            '$set' => [
+                'files.$[file].content' => $file->getContent()
+            ]
+        ];
+        $arrayFilters = [
+            [
+                'file.name' => $file->getName(),
+                'file.type' => $file->getType()
+            ]
+        ];
+
+        $updateResult = $collection->updateOne($filter, $update, ['arrayFilters' => $arrayFilters]);
+
+        if ($updateResult->getModifiedCount() !== 1) {
+            throw new NoUpdateEx("No se pudo actualizar el archivo.");
+        }
     }
 }
