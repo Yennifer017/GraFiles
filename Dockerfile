@@ -22,7 +22,8 @@ RUN composer install
 
 # Da permisos a la carpeta de trabajo
 RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html
+    && chmod -R 777 /var/www/html 
+RUN chmod -R o+w /var/www/html
 
 # Expone el puerto 80 para que el contenedor sea accesible desde fuera
 EXPOSE 80

@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $session->setSessionCookie($user);
         header("Location: ../../../view/user/dashboard.php");
         exit;
-    } catch (NoUserFoundEx $ex) {
+    } catch (NoUserFoundEx | Exception $ex) {
         header("Location: ../../../view/general/login.php?e=401");
         exit;
     }

@@ -1,3 +1,7 @@
+<?php
+    include "../../controllator/util/Session.php";
+    include "../../controllator/util/Connection.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +12,8 @@
 </head>
 <body>
 
-<?php include "./header.php"?>
-<?php
+<?php 
+include "./header.php";
 if (isset($_GET['e']) && $_GET['e'] == '401') {
     echo '<div class="error">Credenciales invalidas</div>';
 }
@@ -28,7 +32,7 @@ if (isset($_GET['e']) && $_GET['e'] == '401') {
     <input type="password" id="password" name="password" required>
     <br>
 
-    <input type="submit" value="Registrarse">
+    <input type="submit" value="Ingresasr">
 </form>
 <div class="espaciado">
 

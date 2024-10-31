@@ -13,12 +13,14 @@ db.users.insertMany(
             rol: "ADMIN",
             files: [
                 {
-                    path: "docs/admin/raiz/firstfile.txt",
-                    type: "txt"
+                    name: "firstfile",
+                    type: "txt",
+                    content: "this is my first file"
                 }, 
                 {
-                    path: "docs/admin/raiz/secondfile.txt",
-                    type: "txt"
+                    name: "secondfile",
+                    type: "txt",
+                    content: "this is admin's second file"
                 }
             ],
             shared: [
@@ -34,8 +36,9 @@ db.users.insertMany(
             rol: "EMPLEADO",
             files: [
                 {
-                    path: "docs/iGriega/raiz/hello-world.txt",
-                    type: "txt"
+                    name: "firstfile",
+                    type: "txt",
+                    content: "This is iGriega's first file, she says: hello world"
                 }
             ],
             shared: [

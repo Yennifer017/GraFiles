@@ -44,4 +44,9 @@ class Session{
             return null;
         }
     }
+
+    public function deleteSessionCookie(){
+        setcookie("session", "", time() - 3600, "/");
+    }
+    
 }

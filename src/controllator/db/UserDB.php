@@ -24,4 +24,23 @@ class UserDB
             throw new NoUserFoundEx();
         }
     }
+
+    public function insetIntoDB($db, User $user)
+    {
+        $collection = $db->users;
+        $document = [
+            "_id" => $user->getUsername(),
+            "name" => $user->getName(),
+            "lastname" => $user->getLastname(),
+            "password" => $user->getPassword(),
+            "email" => $user->getEmail(),
+            "rol" => User::EMPLEADO_ROL,
+            "files" => [],
+            "shared" => []
+        ];
+        $result = $collection->insertOne($document);
+        if ( !($result->getInsertedCount() === 1)) {
+            throw new NoInsertEx();
+        }
+    }
 }
