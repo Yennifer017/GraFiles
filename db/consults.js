@@ -3,6 +3,10 @@
     the instructions are used in all of the system
 */
 
+/*******************************************
+ ****************USUARIOS*******************
+ *******************************************/
+
 //Find users 
 db.users.findOne(
     {
@@ -29,21 +33,57 @@ db.users.insertOne(
     }
 )
 
-//show all documents
+/*******************************************
+ ****************ARCHIVOS*******************
+ *******************************************/
+//show all files in trash
+db.trash.find({})
+
+//show all documents from a especific user
+db.users.findOne({ _id: "<username>" }); 
+    //now, access to the "files" array
+
+//create file
+db.users.updateOne(
+    { _id: "<username>" },
+    { 
+        $push: { 
+            files: {
+                name: "<name file>",
+                type: "<type file>", 
+                content: "<content file>"
+            }
+        } 
+    }
+);
+
+
+//get one file
+db.users.findOne(
+    {
+        _id: "<username>",
+        'files.name': "<fileName>"
+    },
+    {
+        projection: {
+            'files.$': 1
+        }
+    }
+);
 
 //update one document
 db.users.updateOne(
     {
-        _id: "??"
+        _id: "<username>"
     },
     {
-        $set: { "files.$[file].content": "???" }
+        $set: { "files.$[file].content": "<nuevo contenido>" }
     },
     {
         arrayFilters: [
             { 
-                "file.name": "???", 
-                "file.type": "??" 
+                "file.name": "<nombre del archivo>", 
+                "file.type": "<extension del archivo>" 
             }
         ]
     }

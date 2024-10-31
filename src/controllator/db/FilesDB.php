@@ -77,7 +77,6 @@ class FilesDB{
         } else {
             throw new NoDataFoundEx();
         }
-        
     }
 
     public function editFile($db, File $file, $username){
